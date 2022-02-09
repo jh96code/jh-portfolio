@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JH PORTFOLIO</title>
+    <link rel="stylesheet" href="./lib/setup.css" type="text/css">
+    <link rel="stylesheet" href="./lib/fullpage.css" type="text/css">
+    <script src="./lib/jquery.js"></script>
+    <script src="./lib/fullpage.js"></script>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Noto+Sans+KR:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+        
+        body{
+            font-family: 'Noto Sans KR',sans-serif;
+            color: #2b2b2b;
+            background-color: #fffeee;
+        }
+        #fp-nav ul{
+            width: 40px;
+            margin-right: 60px;
+        }
+        #fp-nav ul li{
+            width: 100%;
+            height: 25px;
+            display: inline-block;
+            margin: 10px;
+        }
+        #fp-nav ul li a{
+            display: inline-block;
+        }
+        #fp-nav ul li a span{
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            transition: all .5s;
+        }
+        #fp-nav ul li a span::after{
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            top: 20%;
+            left: 100%;
+            margin-left: 5px;
+            color: #232323;
+            transition: all .5s;
+        }
+        #fp-nav ul li:nth-child(1) a span{
+            background-image: url(./image/home.png);
+            background-blend-mode: color;
+        }
+        #fp-nav ul li:nth-child(1) a span::after{
+            content: "Home";
+        }
+        #fp-nav ul li:nth-child(2) a span{
+            background-image: url(./image/about.png);
+        }
+        #fp-nav ul li:nth-child(2) a span::after{
+            content: "About";
+        }
+        #fp-nav ul li:nth-child(3) a span{
+            background-image: url(./image/portfolio.png);
+        }
+        #fp-nav ul li:nth-child(3) a span::after{
+            content: "Portfolio";
+        }
+        #fp-nav ul li:nth-child(4) a span{
+            background-image: url(./image/contact.png);
+        }
+        #fp-nav ul li:nth-child(4) a span::after{
+            content: "Contact";
+        }
+        #fp-nav ul li:hover a span{
+            width: 28px;
+            height: 28px;
+        }
+        #fp-nav ul li:nth-child(1):hover a span{
+            background-image: url(./image/home_active.png);
+        }
+        #fp-nav ul li:nth-child(2):hover a span{
+            background-image: url(./image/about_active.png);
+        }
+        #fp-nav ul li:nth-child(3):hover a span{
+            background-image: url(./image/portfolio_active.png);
+        }
+        #fp-nav ul li:nth-child(4):hover a span{
+            background-image: url(./image/contact_active.png);
+        }
+        #fp-nav ul li:nth-child(1):hover a span::after{
+            font-size: 13px;
+            color: red;
+        }
+        #fp-nav ul li:nth-child(2):hover a span::after{
+            font-size: 13px;
+            color: blue
+        }
+        #fp-nav ul li:nth-child(3):hover a span::after{
+            font-size: 13px;
+            color: green;
+        }
+        #fp-nav ul li:nth-child(4):hover a span::after{
+            font-size: 13px;
+            color: saddlebrown;
+        }
+        #fp-nav ul li a.active span{
+            width: 28px;
+            height: 28px;
+        }
+        #fp-nav ul li:nth-child(1) a.active span{
+            background-image: url(./image/home_active.png);
+        }
+        #fp-nav ul li:nth-child(2) a.active span{
+            background-image: url(./image/about_active.png);
+        }
+        #fp-nav ul li:nth-child(3) a.active span{
+            background-image: url(./image/portfolio_active.png);
+        }
+        #fp-nav ul li:nth-child(4) a.active span{
+            background-image: url(./image/contact_active.png);
+        }
+        #fp-nav ul li:nth-child(1) a.active span::after{
+            font-size: 13px;
+            color: red;
+        }
+        #fp-nav ul li:nth-child(2) a.active span::after{
+            font-size: 13px;
+            color: blue;
+        }
+        #fp-nav ul li:nth-child(3) a.active span::after{
+            font-size: 13px;
+            color: green;
+        }
+        #fp-nav ul li:nth-child(4) a.active span::after{
+            font-size: 13px;
+            color: saddlebrown;
+        }
+        
+        header{
+            position: fixed;
+            z-index: 999;
+            width: 100%;
+            height: 70px;
+            top: 0px;
+            left: 0px;
+            background-color: rgba(228, 228, 228, .15);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
+        }
+        
+        header #logo{
+            margin-top: 5px;
+        }
+        header #logo img{
+            width: 100px;
+            height: 60px;
+        }
+        
+        header #menu{}
+        header #menu ul{}
+        header #menu ul li{}
+        header #menu ul li a{
+            margin: 0px 20px;
+            padding: 0px 5px;
+            line-height: 60px;
+            font-size: 25px;
+            font-weight: bold;
+            transition: all .5s;
+            color: #2f2f2f;
+        }
+        header #menu ul li:nth-child(1):hover a{
+            color: red;
+            font-size: 25.5px;
+        }
+        header #menu ul li:nth-child(2):hover a{
+            color: blue;
+            font-size: 25.5px;
+        }
+        header #menu ul li:nth-child(3):hover a{
+            color: green;
+            font-size: 25.5px;
+        }
+        header #menu ul li:nth-child(4):hover a{
+            color: saddlebrown;
+            font-size: 25.5px;
+        }
+        
+        main{}
+        main #fullpage .section{
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden;
+        }
+        main #fullpage .section.p1{
+            position: relative;
+        }
+        main #fullpage .section.p1 .video{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        main #fullpage .section.p1 .video video{
+            width: 100%;
+            height: 100%;
+        }
+        main #fullpage .section.p1 .title{
+            font-size: 32px;
+            font-weight: bold;
+            font-style: italic;
+            color: #232323;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+        main #fullpage .section.p1 .sub{
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+            font-style: italic;
+            margin-top: 10px;
+            position: absolute;
+            top: 41%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+        main #fullpage .section.p1 .more{
+            font-size: 22px;
+            font-weight: bold;
+            background-color: red;
+            width: 10%;
+            display: inline-block;
+            color: #eee;
+            line-height: 38px;
+            margin: 36px 0px 60px 0px;
+            border: 3px solid red;
+            border-radius: 5px;
+            transition: all .5s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        main #fullpage .section.p1 .more:hover{
+            background-color: #eee;
+            color: red;
+            font-size: 23px;
+        }
+        
+        main #fullpage .section.p2{
+            height: 100%;
+            position: relative;
+            border-bottom: 2px solid #bbb;
+            background-color: #fcfcfc;
+        }
+        main #fullpage .section.p2 .left{
+            width: 40%;
+            height: 100%;
+            float: left;
+            border-right: 1px solid #bbb;
+        }
+        main #fullpage .section.p2 .left .box{
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+        main #fullpage .section.p2 .left .box h2{
+            width: 100%;
+            font-size: 70px;
+            font-weight: bold;
+            color: #0f4574;
+            position: absolute;
+            top: 15%;
+            left: 66%;
+            transform: translate(-50%,-50%);
+            z-index: 9;
+            font-family: 'Courgette', cursive;
+        }
+        main #fullpage .section.p2 .left .box .img{
+            position: absolute;
+            top: 42%;
+            left: 65%;
+            transform: translate(-50%,-50%);
+            width: 60%;
+            height: 50%;
+            background-color: #fefefe;
+        }
+        main #fullpage .section.p2 .left .box .img img{
+            width: 100%;
+            height: 100%;
+        }
+        main #fullpage .section.p2 .left .box ul.intro{
+            position: absolute;
+            top: 75%;
+            left: 65%;
+            transform: translate(-50%,-50%);
+            width: 60%;
+        }
+        main #fullpage .section.p2 .left .box ul.intro li{
+            width: 100%;
+            text-align: left;
+            margin: 5px 0px;
+        }
+        main #fullpage .section.p2 .left .box ul.intro li .name{
+            float: left;
+            width: 40%;
+            color: #343434;
+            font-weight: bold;
+            font-size: 17px;
+        }
+        main #fullpage .section.p2 .left .box ul.intro li .sub{
+            color: #444;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        main #fullpage .section.p2 .right{
+            width: 60%;
+            height: 100%;
+            float: left;
+            position: relative;
+        }
+        main #fullpage .section.p2 .right .next{
+            background-image: url(./image/next.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 60px;
+            height: 60px;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 40%;
+            left: 73%;
+            filter: invert(.5);
+            cursor: pointer;
+            transition: all .5s;
+            z-index: 3;
+            display: none;
+        }
+        main #fullpage .section.p2 .right .next.view{
+            display: block;
+        }
+        main #fullpage .section.p2 .right .prev{
+            background-image: url(./image/prev.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 60px;
+            height: 60px;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 40%;
+            left: 2%;
+            filter: invert(.5);
+            cursor: pointer;
+            transition: all .5s;
+            z-index: 3;
+            display: none;
+        }
+        main #fullpage .section.p2 .right .prev.view{
+            display: block;
+        }
+        main #fullpage .section.p2 .right .next:hover{
+            filter: invert(.2);
+        }
+        main #fullpage .section.p2 .right .prev:hover{
+            filter: invert(.2);
+        }
+        
+        main #fullpage .section.p2 .right .intro.p1{
+            position: absolute;
+            top: 12%;
+            left: 4%;
+            text-align: left;
+            font-size: 18px;
+            line-height: 33px;
+            display: none;
+            width: 500px;
+        }
+        main #fullpage .section.p2 .right .intro.p1.view{
+            display: block;
+        }
+        main #fullpage .section.p2 .right .intro.p1 h3{
+            font-size: 19px;
+            font-weight: bold;
+            color: #0a0a0a;
+            margin-top: 35px;
+            margin-bottom: 10px;
+        }
+        main #fullpage .section.p2 .right .intro.p1 p{
+            font-size: 17px;
+            color: #545454;
+            font-weight: bold;
+            margin: 1px;
+            
+        }
+        
+        main #fullpage .section.p2 .right .intro.p2{
+            position: absolute;
+            top: 25%;
+            left: 9%;
+            margin-top: 10px;
+            font-size: 19px;
+            font-weight: bold;
+            line-height: 33px;
+            margin-left: 15px;
+            display: none;
+        }
+        main #fullpage .section.p2 .right .intro.p2 span{
+            font-weight: bold;
+            font-size: 22px;
+            letter-spacing: 2px;
+        }
+        main #fullpage .section.p2 .right .intro.p2.view{
+            display: block;
+        }
+        main #fullpage .section.p2 .bottom{
+            position: absolute;
+            top: 83%;
+            left: 0%;
+            width: 100%;
+            border-top: 1px solid #bbb;
+        }
+        
+        main #fullpage .section.p3{
+            background-color: #fcfcfc;
+        }
+        main #fullpage .section.p3 h2{
+            color: #0f4574;
+            font-family: 'Courgette', cursive;
+            font-size: 55px;
+            margin: 15px 0px;
+        }
+        main #fullpage .section.p3 .title{}
+        main #fullpage .section.p3 .title li{
+            font-size: 20px;
+        }
+        main #fullpage .section.p3 .title li::after{
+            content: 'ㅣ';
+            font-size: 20px;
+            color: #999;
+            margin: 0px 5px;
+            vertical-align: middle;
+        }
+        main #fullpage .section.p3 .title li:last-child::after{
+            content: none;
+        }
+        main #fullpage .section.p3 .title li > a{
+            font-size: 19px;
+            font-weight: 700;
+            transition: all 0.4s;
+            height: 40px;
+            line-height: 40px;
+            padding: 0px 10px;
+            color: #333;
+        }
+        main #fullpage .section.p3 .title li.view > a{
+            font-size: 18px;
+            color: #425a73;
+            background-color: #bbdcfb;
+            border-radius: 6px;
+        }
+        main #fullpage .section.p3 .title li:hover > a{
+            font-size: 18px;
+            color: #425a73;
+            background-color: #bbdcfb;
+            border-radius: 6px;
+        }
+        main #fullpage .section.p3 .main{
+            margin-top: 60px;
+        }
+        main #fullpage .section.p3 .main .tap{
+            display: none;
+        }
+        main #fullpage .section.p3 .main .tap.view{
+            display: inherit;
+        }
+        main #fullpage .section.p3 .main .tap .grid{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 0px;
+            width: 90%;
+            margin-left: 5%;
+        }
+        main #fullpage .section.p3 .main .tap .left{
+            text-align: left;
+        }
+        main #fullpage .section.p3 .main .tap .left h3{
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+        main #fullpage .section.p3 .main .tap .left h3 span{
+            font-size: 25px;
+            vertical-align: baseline;
+        }
+        main #fullpage .section.p3 .main .tap .left p{
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 30px;
+            line-height: 30px;
+            margin-bottom: 100px;
+            color: #555;
+        }
+        main #fullpage .section.p3 .main .tap .left .site{
+            border: 1.5px solid #425a73;
+            border-radius: 5px;
+            color: #425a73;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            background-color: #efefef;
+            width: 160px;
+            line-height: 40px;
+            transition: all .5s;
+            margin-bottom: 40px;
+        }
+        main #fullpage .section.p3 .main .tap .left .site:hover{
+            color: #fefefe;
+            background-color: #425a73;
+        }
+        main #fullpage .section.p3 .main .tap .right{
+            background-color: #ddd;
+        }
+        main #fullpage .section.p3 .main .tap .right .img{
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            width: 100%;
+            height: 100%;
+        }
+            
+        main #fullpage .section.p4{
+            background-color: #efefef;
+            position: relative;
+            overflow: hidden;
+            z-index: -2;
+        }
+        main #fullpage .section.p4 .circle1{
+            position: absolute;
+            left: -14%;
+            bottom: -20%;
+            z-index: -1;
+            animation: circle1 3s alternate infinite linear none;
+        }
+        main #fullpage .section.p4 .circle1 img{
+            width: 100%;
+        }
+        main #fullpage .section.p4 .circle2{
+            position: absolute;
+            right: -20%;
+            top: -20%;
+            z-index: -1;
+            animation: circle2 3s alternate infinite linear none;
+        }
+        main #fullpage .section.p4 .circle2 img{
+            width: 100%;
+            
+        }
+        main #fullpage .section.p4 .contact{
+            font-size: 55px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #0f4574;
+            font-family: 'Courgette', cursive;
+        }
+        main #fullpage .section.p4 ul{
+            margin-bottom: 150px;
+        }
+        main #fullpage .section.p4 ul > li{
+            margin: 60px 40px;
+        }
+        main #fullpage .section.p4 ul > li ol{}
+        main #fullpage .section.p4 ul > li ol > li.main{
+            font-weight: bold;
+            font-size: 23px;
+            font-family: 'Montserrat';
+            color: #222;
+            margin-right: 10px;
+        }
+        main #fullpage .section.p4 ul > li ol > li.sub{
+            font-size: 21px;
+            font-family: 'Montserrat';
+            color: #333;
+        }
+        main #fullpage .section.p4 footer{
+            background-color: rgba(228, 228, 228, .15);
+            font-size: 13px;
+            position: absolute;
+            width: 100%;
+            bottom: 3px;
+            left: 0px;
+            line-height: 18px;
+        }
+        main #fullpage .section.p4 footer span{
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        @keyframes circle1{
+            0%{transform: translate(-100px, 250px);}
+            100%{transform: translate(-100px, 150px);}
+        }
+        
+        @keyframes circle2{
+            0%{transform: translate(100px, -250px);}
+            100%{transform: translate(100px, -150px);}
+        }
+        
+        
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="wrap">
+            <div class="flex">
+                
+                <a href="#Home" id="logo">
+                    <img src="./image/logo.png" alt="JH">
+                </a>
+                
+                <nav id="menu">
+                    <ul>
+                        <li><a href="#Home">Home</a></li>
+                        <li><a href="#About">About</a></li>
+                        <li><a href="#Portfolio">Portfolio</a></li>
+                        <li><a href="#Contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+            </div>
+        </div>
+        
+    </header>
+    
+    <main>
+        
+        <div id="fullpage">
+            <div class="section p1" data-anchor="Home">
+                <div class="video">
+                    <video data-autoplay muted loop>
+                        <source src="./image/cloud.mp4" type="video/mp4">
+                    </video>
+                    <div class="title">
+                    I'm constantly creating, growing up to be a competent web publisher. <br>
+                    I'm Ahn Junhyuk, a new web publisher.
+                    </div>
+                    <div class="sub">
+                        끊임없이 창조해내고 실력있는 웹퍼블리셔로 성장하고 <br>
+                        싶은, 신입 웹퍼블리셔 안준혁입니다. <br>
+                    </div>
+                    <a href="#About" class="more">Read More</a>
+                </div>
+            </div>
+            
+            <div class="section p2" data-anchor="About">
+                    <div class="left">
+                        <div class="box">
+                            <h2>About Me</h2>
+                            <div class="img">
+                                <img src="./image/about_img.jpg" alt="">
+                            </div>
+                            <ul class="intro">
+                                <li>
+                                    <span class="name">이름</span>
+                                    <span class="sub">안준혁</span>
+                                </li>
+                                <li>
+                                    <span class="name">생년원일</span>
+                                    <span class="sub">1996.09.15 (26세)</span>
+                                </li>
+                                <li>
+                                    <span class="name">주소</span>
+                                    <span class="sub">경상남도 김해시 삼계동</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="next view"></div>
+                        <div class="prev"></div>
+                        <div class="intro p1 view">
+                            <h3>학력</h3>
+                            <p>2015.02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;분성고등학교 졸업</p>
+                            <p>2020.02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;동원과기대 호텔외식조리과 졸업</p>
+                            
+                            <h3>수료과정</h3>
+                            <p>2020.12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;김해 더조은컴퓨터학원</p>
+                            <p>- 영상편집&amp;모션그래픽제작(프리미어,에펙)</p>
+                            <p>- 웹퍼블리싱(Html5,CSS3)</p>
+                            <p>- 웹퍼블리싱(Javascript,jQuery)</p>
+                            
+                            <h3>자격증</h3>
+                            <p>2013.10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;양식조리기능사</p>
+                            <p>2014.06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한식조리기능사</p>
+                            <p>2019.09&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;정보처리기능사</p>
+                            <p>2021.04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;웹디자인기능사</p>
+                            <p>2021.10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;컴퓨터그래픽스운용기능사 필기합격</p>
+                            <p>2021.12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;컴퓨터활용능력1급 필기합격</p>
+                        </div>
+                        <div class="intro p2">
+                            안녕하세요  :) <br>
+                            끊임없이 창조해내고 최선을 다하는 신입 웹퍼블리셔 안준혁입니다. <br> <br>
+                            <span>'每事盡善'</span> <br>
+                            '모든일에 최선을 다하자' 저의 좌우명입니다. <br>
+                            제가 맡은바 모든일에 최선을 다하며 게을리 하지않고 <br>
+                            언제나 사용자의 관점에서 생각하며 열정적으로 소통하는 웹 퍼블리셔가 되겠습니다.
+                        </div>
+                    </div>
+                    <div class="bottom"></div>
+            </div>
+            
+            <div class="section p3" data-anchor="Portfolio">
+                
+                <div class="wrap">    
+                    <h2>Portfolio</h2>
+                    <ul class="title">
+                        <li class="view" data-anchor="tap01"><a href="#" >제네시스 부티크</a></li>
+                        <li data-anchor="tap02"><a href="#">어바웃미</a></li>
+                        <li data-anchor="tap03"><a href="#">이삭토스트</a></li>
+                        <li data-anchor="tap04"><a href="#">제네시스</a></li>
+                        <li data-anchor="tap05"><a href="#">맛찾사</a></li>
+                        <li data-anchor="tap06"><a href="#">그린카</a></li>
+                    </ul>
+                    <div class="main">
+                        <div id="tap01" class="tap view">
+                            <div class="grid">
+                                <div class="left">
+                                    <h3>제네시스 부티크<span>(포트폴리오용)</span></h3>
+                                    <p>
+                                        제네시스 부티크 카피 사이트를 제작하였습니다.<br> 
+                                        서브메뉴의 페이지도 제작하였습니다.<br> <br>
+                                        사용 툴 : Brackets, Photoshop <br>
+                                        참여도 : 100%
+                                    </p>
+                                    <a href="./portfolio01/home.html" target="_blank" class="site">사이트 바로가기</a>
+                                </div>
+                                <div class="right">
+                                    <div class="img" style="background-image: url(./image/Portfolio_img01.jpg)"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="tap02" class="tap">
+                            <div class="grid">
+                                <div class="left">
+                                    <h3>어바웃미<span>(포트폴리오용)</span></h3>
+                                    <p>
+                                        어바웃미 화장품 카피 사이트를 제작하였습니다.<br> <br> <br>
+                                        사용 툴 : Brackets, Photoshop <br>
+                                        참여도 : 100%
+                                    </p>
+                                    <a href="./portfolio02/index.html" target="_blank" class="site">사이트 바로가기</a>
+                                </div>
+                                <div class="right">
+                                    <div class="img" style="background-image: url(./image/Portfolio_img02.jpg)"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="tap03" class="tap">
+                            <div class="grid">
+                                <div class="left">
+                                    <h3>이삭토스트<span>(포트폴리오용)</span></h3>
+                                    <p>
+                                        이삭토스트 카피 사이트를 제작하였습니다. <br>
+                                        반응형 웹으로 제작하였습니다. <br> <br>
+                                        사용 툴 : Brackets, Photoshop <br>
+                                        참여도 : 100%
+                                    </p>
+                                    <a href="./portfolio03/index.html" target="_blank" class="site">사이트 바로가기</a>
+                                </div>
+                                <div class="right">
+                                    <div class="img" style="background-image: url(./image/Portfolio_img03.jpg)"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="tap04" class="tap">
+                            <div class="grid">
+                                <div class="left">
+                                    <h3>제네시스<span>(포트폴리오용)</span></h3>
+                                    <p>
+                                        제네시스 자동차 카피 사이트를 제작하였습니다.<br> 
+                                        반응형 웹으로 제작하였습니다.<br> <br>
+                                        사용 툴 : Brackets, Photoshop <br>
+                                        참여도 : 100%
+                                    </p>
+                                    <a href="./portfolio04/index.html" target="_blank" class="site">사이트 바로가기</a>
+                                </div>
+                                <div class="right">
+                                    <div class="img" style="background-image: url(./image/Portfolio_img04.jpg)"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="tap05" class="tap">
+                            <div class="grid">
+                                <div class="left">
+                                    <h3>맛찾사<span>(포트폴리오용)</span></h3>
+                                    <p>
+                                        맛찾사 푸드사이트를 카피 제작하였습니다.<br> <br> <br>
+                                        사용 툴 : Brackets, Photoshop <br>
+                                        참여도 : 100%
+                                    </p>
+                                    <a href="./portfolio05/index.html" target="_blank" class="site">사이트 바로가기</a>
+                                </div>
+                                <div class="right">
+                                    <div class="img" style="background-image: url(./image/Portfolio_img05.jpg)"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="tap06" class="tap">
+                            <div class="grid">
+                                <div class="left">
+                                    <h3>그린카<span>(포트폴리오용)</span></h3>
+                                    <p>
+                                        그린카 모바일 사이트를 카피 제작하였습니다.<br>
+                                        반응형 웹으로 제작하였습니다. <br> <br>
+                                        사용 툴 : Brackets, Photoshop <br>
+                                        참여도 : 100%
+                                    </p>
+                                    <a href="./portfolio06/index.html" target="_blank" class="site">사이트 바로가기</a>
+                                </div>
+                                <div class="right">
+                                    <div class="img" style="background-image: url(./image/Portfolio_img06.jpg)"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section p4" data-anchor="Contact">
+                
+                <div class="circle1">
+                    <img src="./image/circle01.png" alt="">
+                </div>
+                
+                <div class="circle2">
+                    <img src="./image/circle02.png" alt="">
+                </div>
+                
+                <div class="contact">Contact</div>
+                <ul>
+                    <li>
+                        <ol>
+                            <li class="main">PHONE</li>
+                            <li class="sub">010.6311.4938</li>
+                        </ol>
+                    </li>
+                    <li>
+                        <ol>
+                            <li class="main">EMAIL</li>
+                            <li class="sub">whitev77@naver.com</li>
+                        </ol>
+                    </li>
+                </ul>
+                
+                <footer>
+                    
+                    본 사이트는 상업적 목적이 아닌 개인포트폴리오 사이트로 제작되었습니다. <br>
+                    사용된 일부 이미지 및 폰트 등은 별도의 출처가 있음을 밝혀 드립니다. <br>
+                    <span>© 2021 Ahn, Jun-Hyuk. All Rights Reserved.</span>
+                    
+                </footer>
+                
+                
+            </div>
+        </div>
+        
+    </main>
+    
+<script>
+    
+    new fullpage('#fullpage', {
+        //options here
+        autoScrolling:true,
+        navigation: true,
+        anchors:['Home', 'About', 'Portfolio', 'Contact'],
+        scrollingSpeed: 1000,
+        scrollHorizontally: true
+    });
+    
+    $(function(){
+       
+        //next, prev
+        let prev = $("main #fullpage .section.p2 .right .prev");
+        let next = $("main #fullpage .section.p2 .right .next");
+        const p1 = $("main #fullpage .section.p2 .right .intro.p1");
+        const p2 = $("main #fullpage .section.p2 .right .intro.p2");
+        $(function(){
+            $(next).on("click",function(){
+                $(next).stop().fadeOut(),$(p1).stop().fadeOut();
+                $(prev).stop().fadeIn(),$(p2).stop().fadeIn();
+            })
+            $(prev).on("click",function(){
+                $(prev).stop().fadeOut(),$(p2).stop().fadeOut();
+                $(next).stop().fadeIn(),$(p1).stop().fadeIn();
+            })
+        });
+        //next, prev 끝
+        
+        //탭기능
+        $("main #fullpage .section.p3 .title li").click(function(){
+            var tab_id = $(this).attr("data-anchor");
+                
+            $("main #fullpage .section.p3 .title li").removeClass("view");
+            $("main #fullpage .section.p3 .main .tap").hide();
+                
+            $(this).addClass("view");
+            $("main #fullpage .section.p3 .main #"+tab_id).fadeIn(1000);
+        })
+        //탭기능 끝
+        
+    });
+    
+</script> 
+</body>
+</html>
